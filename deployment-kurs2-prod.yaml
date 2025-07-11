@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homepage-prod-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homepage-prod
+  template:
+    metadata:
+      labels:
+        app: homepage-prod
+    spec:
+      containers:
+        - name: homepage-prod
+          image: skyerededucation.azurecr.io/10.07.homepage:latest
+          ports:
+            - containerPort: 80
+              name: homepageport
